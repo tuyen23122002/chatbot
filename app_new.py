@@ -12,8 +12,8 @@ st.set_page_config(page_title="AI Chatbot", page_icon="🤖")
 st.markdown("""
     <style>
         body { background-color: #f4f4f4; }
-        .user-message { background-color: #dcf8c6; padding: 10px; border-radius: 10px; }
-        .bot-message { background-color: #ebebeb; padding: 10px; border-radius: 10px;margin-top: 10px; }
+        .user-message { background-color: #dcf8c6; padding: 10px; border-radius: 10px;margin-top: 10px; margin-bottom: 10px; }
+        .bot-message { background-color: #ebebeb; padding: 10px; border-radius: 10px; }
         .image-container { margin: 10px 0; }
     </style>
 """, unsafe_allow_html=True)
@@ -22,7 +22,7 @@ st.markdown("""
 st.markdown("<h1 style='text-align: center; color: #4a90e2;'>🤖 AI Chatbot</h1>", unsafe_allow_html=True)
 
 # API Endpoint
-api_url = "https://7adf-2405-4802-1563-2b30-a88c-65f3-d83f-2b35.ngrok-free.app/chatbot"
+api_url = "https://5896-1-55-245-5.ngrok-free.app/chatbot"
 
 # Session State Initialization
 if "messages" not in st.session_state:

@@ -32,21 +32,28 @@ chatbot_y_te/
 ## Hướng dẫn cài đặt
 
 1. **Cài đặt thư viện**
+
    ```
    pip install -r chatbot/requirements.txt
    ```
 
 2. **Chạy ứng dụng**
+
    - Đối với giao diện quản lý hội thoại, đăng nhập, DB:
+
      ```
      streamlit run chatbot/app.py
      ```
+
    - Đối với giao diện chatbot AI hiện đại, kết nối API:
+
      ```
      streamlit run chatbot/app_new.py
      ```
+	 
 
 3. **Cấu hình dữ liệu**
+
    - Các file dữ liệu lớn (BioASQ, FAISS index, kết quả đánh giá) đã được lưu trong các thư mục tương ứng.
    - Đảm bảo cấu hình kết nối DB (SQL Server) nếu sử dụng `app.py`.
 
@@ -67,6 +74,7 @@ chatbot_y_te/
 ## Tham khảo & Trích dẫn
 
 == Citing BioASQ ==
+
 When using this data please cite our work:
 
 Anastasia Krithara, Anastasios Nentidis, Konstantinos Bougiatiotis, Georgios Paliouras. BioASQ-QA: A manually curated corpus for Biomedical Question Answering. bioRxiv 2022.12.14.520213; doi: https://doi.org/10.1101/2022.12.14.520213

@@ -1,24 +1,77 @@
-== Data purpose ==
+# Chatbot Y Tế - README
 
-The data are intended to be used as training and development data for BioASQ 12, which will take place during 2024.
-There is one file containing the data:
- - training12b.json
+## Mục đích dự án
 
+Dự án này xây dựng một hệ thống Chatbot AI hỗ trợ lĩnh vực y tế, bao gồm các thành phần:
+- Ứng dụng giao diện người dùng (Streamlit)
+- Xử lý dữ liệu, đánh giá và lưu trữ vector
+- Tích hợp API và các mô hình AI/ML hiện đại
 
-The file contains the data of the first eleven editions of the challenge: 5049 questions [1] with their relevant documents, snippets, concepts and RDF triples, exact and ideal answers.
-For more information about the format of the data as well as the instructions for participating at BioASQ please consult: http://participants-area.bioasq.org/general_information/Task12b/
+## Cấu trúc thư mục
 
-Differences with BioASQ-training11b.json 
-	- 330 new questions added from BioASQ11
+```
+chatbot_y_te/
+└── chatbot/
+    ├── app.py                  # Ứng dụng Streamlit: Đăng nhập, đăng ký, quản lý hội thoại, lưu trữ DB
+    ├── app_new.py              # Ứng dụng Streamlit: Chatbot giao tiếp với API, hỗ trợ hình ảnh, UI hiện đại
+    ├── procceed_data.ipynb     # Notebook xử lý dữ liệu (BioASQ, embedding, v.v.)
+    ├── requirements.txt        # Danh sách thư viện Python cần thiết
+    ├── vecto store/
+    │   ├── faiss_index.faiss   # FAISS index cho tìm kiếm vector
+    │   └── faiss_index.pkl     # Pickle FAISS index
+    ├── rag_metrics_summary.json, rag_metrics_summary_real_time_agentic.json
+    │                           # Kết quả đánh giá các chỉ số RAG (Correctness, Relevancy, Faithfulness)
+    ├── rag_evaluation_*.json, rag_evaluation_*.csv
+    │                           # File kết quả đánh giá chi tiết cho các mô hình/hệ thống
+    ├── README                  # Thông tin về dữ liệu BioASQ (tham khảo, trích dẫn)
+    ├── test.ipynb, test_model.ipynb
+    │                           # Notebook kiểm thử mô hình, pipeline
+    └── .gitignore              # Quy tắc loại trừ file khi quản lý bằng git
+```
 
-		
+## Hướng dẫn cài đặt
+
+1. **Cài đặt thư viện**
+   ```
+   pip install -r chatbot/requirements.txt
+   ```
+
+2. **Chạy ứng dụng**
+   - Đối với giao diện quản lý hội thoại, đăng nhập, DB:
+     ```
+     streamlit run chatbot/app.py
+     ```
+   - Đối với giao diện chatbot AI hiện đại, kết nối API:
+     ```
+     streamlit run chatbot/app_new.py
+     ```
+
+3. **Cấu hình dữ liệu**
+   - Các file dữ liệu lớn (BioASQ, FAISS index, kết quả đánh giá) đã được lưu trong các thư mục tương ứng.
+   - Đảm bảo cấu hình kết nối DB (SQL Server) nếu sử dụng `app.py`.
+
+## Các thành phần chính
+
+- **app.py**: Ứng dụng Streamlit hỗ trợ đăng nhập, đăng ký, lưu lịch sử hội thoại, kết nối SQL Server.
+- **app_new.py**: Ứng dụng Streamlit giao diện hiện đại, chat với API, hỗ trợ trả lời văn bản và hình ảnh.
+- **procceed_data.ipynb**: Xử lý, chuẩn bị dữ liệu, embedding, xây dựng index vector.
+- **vecto store/**: Lưu trữ FAISS index phục vụ tìm kiếm ngữ nghĩa.
+- **rag_metrics_summary.json**: Tổng hợp các chỉ số đánh giá hệ thống RAG.
+- **test_model.ipynb, test.ipynb**: Notebook kiểm thử mô hình, pipeline.
+
+## Dữ liệu và đánh giá
+
+- Dữ liệu BioASQ (xem chi tiết trong phần trích dẫn bên dưới).
+- Các file `.json`, `.csv` lưu kết quả đánh giá chi tiết, tổng hợp các chỉ số về độ chính xác, liên quan, trung thực của hệ thống.
+
+## Tham khảo & Trích dẫn
+
 == Citing BioASQ ==
 When using this data please cite our work:
 
 Anastasia Krithara, Anastasios Nentidis, Konstantinos Bougiatiotis, Georgios Paliouras. BioASQ-QA: A manually curated corpus for Biomedical Question Answering. bioRxiv 2022.12.14.520213; doi: https://doi.org/10.1101/2022.12.14.520213
 
-
-Fore more information about the challenge, the organisers and the relevant publications please visit: http://bioasq.org/
+For more information about the challenge, the organisers and the relevant publications please visit: http://bioasq.org/
 
 [1] The distribution of 5046 questions : 1515 factoid, 1357 yesno, 1210 summary, 967 list
 
